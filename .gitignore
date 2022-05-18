@@ -1,3 +1,6 @@
+.bundle
+**.lock
+.bash_history
 *.gem
 *.rbc
 /.config
