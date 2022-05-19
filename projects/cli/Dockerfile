@@ -8,6 +8,8 @@ LABEL maintainer="dla-staff@umich.edu"
 
 # Install Vim (optional)
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
+  sqlite3 \
+  libsqlite3-dev \
   vim-tiny
 
 #RUN gem update --system 3.2.3
