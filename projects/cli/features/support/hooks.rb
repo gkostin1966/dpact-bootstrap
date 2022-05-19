@@ -1,6 +1,5 @@
 Before do |scenario|
   puts "Before #{scenario.name}"
-  BalanceStore.new.balance = 0
   TransactionQueue.clear
 end
 
