@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM ruby:2.5.7
 
 ARG UNAME=app
 ARG UID=1000
@@ -10,7 +10,8 @@ LABEL maintainer="dla-staff@umich.edu"
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
   vim-tiny
 
-RUN gem update --system 3.2.3
+#RUN gem update --system 3.2.3
+RUN gem update --system
 RUN gem install bundler
 
 RUN groupadd -g ${GID} -o ${UNAME}
@@ -23,8 +24,10 @@ ENV BUNDLE_PATH /gems
 
 WORKDIR /app
 
-COPY --chown=${UID}:${GID} . /app
+COPY --chown=${UID}:${GID} Gemfile /app/Gemfile
 RUN bundle install
+
+COPY --chown=${UID}:${GID} . /app
 
 CMD ["sleep", "infinity"]
 
